@@ -36,11 +36,12 @@ class JoystickHandler(object):
 
 
 class Object(Sprite):
-    def __init__(self, name):
+    def __init__(self, name, avion=True):
         super(Object, self).__init__()
         self.og_surf = load_sprite(name)
         self.surf = self.og_surf
         self.rect = self.surf.get_rect(center=(400, 400))
+        self.rot_speed = 3
         self.speed = 5
         self.angle = 0
         self.change_angle = 0
@@ -52,7 +53,7 @@ class Object(Sprite):
         self.rect = self.surf.get_rect(center=self.rect.center)
 
     def move(self, norm_angle):
-        self.change_angle = int(norm_angle * 3.0)
+        self.change_angle = int(norm_angle * self.rot_speed)
         self.rot()
         self.rect.x += cos(float(self.angle)*pi/180.0) * self.speed
         self.rect.y -= sin(float(self.angle)*pi/180.0) * self.speed

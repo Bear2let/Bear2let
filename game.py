@@ -24,10 +24,9 @@ class AirBattle:
         self.screen = pygame.display.set_mode((1280, 720))
         self.background = load_sprite("decor", False)
 
-        self.obj = Object("avion_D")
+        self.obj = Object("avion_D", True)
         self.obj.angle = 0
-        self.obj.rect.x = 100
-        self.obj.rect.y = 100
+        self.obj.rect = (100, 100)
         self.all_sprites = pygame.sprite.Group()
         self.all_sprites.add(self.obj)
 
@@ -57,4 +56,4 @@ class AirBattle:
             sprite.move(self.joy[0].axis[1])
             self.screen.blit(sprite.surf, sprite.rect)
         pygame.display.flip()
-        self.clock.tick(30) # limite a 30 FPS
+        self.clock.tick(30)  # limite a 30 FPS
