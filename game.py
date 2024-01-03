@@ -57,4 +57,4 @@ class AirBattle:
             sprite.move(self.joy[0].axis[1])
             self.screen.blit(sprite.surf, sprite.rect)
         pygame.display.flip()
-        self.clock.tick(30) # limite a 30 FPS
+        self.clock.tick(30)  # limite a 30 FPS
