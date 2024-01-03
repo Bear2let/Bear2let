@@ -1,46 +1,7 @@
 # AirBattle/game.py
 import pygame
 from pygame.locals import *
-from utils import load_sprite
-
-
-class Object(pygame.sprite.Sprite):
-    def __init__(self, name):
-        super(Object, self).__init__()
-        self.og_surf = load_sprite(name)
-        self.surf = self.og_surf
-        self.rect = self.surf.get_rect(center=(400, 400))
-        self.speed = 10
-        self.angle = 0
-        self.change_angle = 0
-
-    def rot(self):
-        self.surf = pygame.transform.rotate(self.og_surf, self.angle)
-        self.angle += self.change_angle
-        self.angle = self.angle % 360
-        self.rect = self.surf.get_rect(center=self.rect.center)
-
-    def move(self, norm_angle):
-        self.change_angle = int(norm_angle * 10.0)
-        self.rot()
-
-
-class JoystickHandler(object):
-    def __init__(self, num_id):
-        self.id = num_id
-        self.joy = pygame.joystick.Joystick(num_id)
-        self.name = self.joy.get_name()
-        self.joy.init()
-        self.num_axes = self.joy.get_numaxes()
-        self.num_buttons = self.joy.get_numbuttons()
-
-        self.axis = []
-        for i in range(self.num_axes):
-            self.axis.append(self.joy.get_axis(i))
-
-        self.button = []
-        for i in range(self.num_buttons):
-            self.button.append(self.joy.get_button(i))
+from utils import load_sprite, JoystickHandler, Object
 
 
 class AirBattle:
