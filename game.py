@@ -48,6 +48,7 @@ class AirBattle:
                 self.joy[event.joy].button[event.button] = 1
 
     def _game_logic(self):
+        # pygame.sprite.spritecollide() collision entre avion et groupe (missiles + balles)
         pass
 
     def _draw(self):
