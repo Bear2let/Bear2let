@@ -21,12 +21,13 @@ class AirBattle:
         for i in range(self.joy_count):
             self.joy.append(JoystickHandler(i))
 
-        self.screen = pygame.display.set_mode((1280, 720))
+        self.screen = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)
         self.background = load_sprite("decor", False)
 
         self.obj = Object("avion_D", True)
         self.obj.angle = 0
-        self.obj.rect = (100, 100)
+        self.obj.rect.x = 100
+        self.obj.rect.y = 100
         self.all_sprites = pygame.sprite.Group()
         self.all_sprites.add(self.obj)
 
